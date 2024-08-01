@@ -1,0 +1,67 @@
+name: Android CI
+
+on:
+  push:
+    branches: [ "master", "develop" ]
+  pull_request:
+    branches: [ "master", "develop" ]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v4
+    - name: set up JDK 17
+      uses: actions/setup-java@v4
+      with:
+        java-version: '17'
+        distribution: 'temurin'
+        cache: gradle
+
+    - name: Cache Gradle Packages
+      uses: actions/cache@v2
+      with:
+        path: |
+          ~/.gradle/caches
+          ~/.gradle/wrapper
+        key: ${{runner.os}}-gradle-${{hashFiles('**/*.gradle*', '**/gradle-wrapper.properties')}}
+        restore-keys: |
+          ${{runner.os}}-gradle-     
+
+    - name: Grant execute permission for gradlew
+      run: chmod +x gradlew
+
+    - name: Create LOCAL_PROPERTIES
+      run: echo '${{ secrets.LOCAL_PROPERTIES }}' > ./local.properties
+
+    - name: Run ktlint
+      run: ./gradlew ktlintCheck
+
+    - name: Build with Gradle
+      run: ./gradlew build
+
+    - name: Codin Android CI Discord Notification
+      uses: sarisia/actions-status-discord@v1
+      if: ${{ success() }}
+      with:
+        title: ✅ Codin-Android-CI 성공! ✅
+        webhook: ${{ secrets.CODIN_DISCORD_WEBHOOK }}
+        status: ${{ job.status }}
+        image: ${{ secrets.SUCCESS_IMAGE }}
+        color: 00FF00
+        url: "https://github.com/sarisia/actions-status-discord"
+        username: Codin CI Bot
+
+    - name: Codin Android CI Discord Notification
+      uses: sarisia/actions-status-discord@v1
+      if: ${{ failure() }}
+      with:
+        title: ❗️ Codin-Android-CI 실패! ❗️
+        webhook: ${{ secrets.CODIN_DISCORD_WEBHOOK }}
+        status: ${{ job.status }}
+        image: ${{ secrets.FAILED_IMAGE }}
+        color: 00FF00
+        url: "https://github.com/sarisia/actions-status-discord"
+        username: Codin CI Bot
