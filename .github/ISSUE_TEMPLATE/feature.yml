@@ -1,0 +1,9 @@
+name: "Feature"
+description: "할 일 정리하기"
+labels: "✨ Feature"
+body:
+  - type: textarea
+    attributes:
+      label: Describe
+      description: |
+        [Description] 할 일에 관한 설명을 작성해주세요.
