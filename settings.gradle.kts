@@ -1,4 +1,5 @@
 pluginManagement {
+    includeBuild("build-logic")
     repositories {
         google {
             content {
@@ -20,6 +21,7 @@ dependencyResolutionManagement {
 }
 
 rootProject.name = "Codin"
+
 include(":app")
 include(":common:extension")
 include(":common:resource")
@@ -37,3 +39,5 @@ include(":feature:insight")
 include(":feature:login")
 include(":feature:setting")
 include(":widget")
+
+gradle.startParameter.excludedTaskNames.addAll(listOf(":build-logic:testClasses"))
