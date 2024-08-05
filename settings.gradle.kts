@@ -39,5 +39,6 @@ include(":feature:insight")
 include(":feature:login")
 include(":feature:setting")
 include(":widget")
+include(":baselineprofile")
 
 gradle.startParameter.excludedTaskNames.addAll(listOf(":build-logic:testClasses"))
