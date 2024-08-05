@@ -17,14 +17,14 @@ allprojects {
                     listOf(
                         "-P",
                         "plugin:androidx.compose.compiler.plugins.kotlin:reportsDestination=" +
-                                rootProject.buildDir.absolutePath + "/compose_metrics/",
+                            rootProject.buildDir.absolutePath + "/compose_metrics/",
                     )
 
                 freeCompilerArgs +=
                     listOf(
                         "-P",
                         "plugin:androidx.compose.compiler.plugins.kotlin:metricsDestination=" +
-                                rootProject.buildDir.absolutePath + "/compose_metrics/",
+                            rootProject.buildDir.absolutePath + "/compose_metrics/",
                     )
             }
         }
