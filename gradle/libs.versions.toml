@@ -9,7 +9,7 @@ kotlinxSerializationJson = "1.7.1"
 kotlin = "2.0.0"
 kotlinDatetime = "0.6.0"
 ktlint = "12.1.1"
-hilt = "2.51.1"
+hilt = "2.52"
 hiltNavigation = "1.2.0"
 ksp = "2.0.0-1.0.23"
 
