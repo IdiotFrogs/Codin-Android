@@ -11,7 +11,7 @@ kotlinDatetime = "0.6.0"
 ktlint = "12.1.1"
 hilt = "2.51.1"
 hiltNavigation = "1.2.0"
-ksp = "2.0.0-1.0.23"
+ksp = "2.0.10-1.0.24"
 
 okhttp = "4.12.0"
 retrofit = "2.11.0"
