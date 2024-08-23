@@ -8,7 +8,6 @@ androidxNavigation = "2.8.0-beta07"
 kotlinxSerializationJson = "1.7.1"
 kotlin = "2.0.10"
 kotlinDatetime = "0.6.0"
-ktlint = "12.1.1"
 hilt = "2.52"
 hiltNavigation = "1.2.0"
 ksp = "2.0.10-1.0.24"
@@ -21,6 +20,8 @@ landscapist = "2.3.6"
 junit = "4.13.2"
 androidxTestExt = "1.2.1"
 androidxEspresso = "3.6.1"
+ktlint = "12.1.1"
+detekt = "1.23.6"
 
 uiautomator = "2.3.0"
 benchmarkMacroJunit4 = "1.2.4"
@@ -77,3 +78,4 @@ ksp = { id = "com.google.devtools.ksp", version.ref = "ksp" }
 compose-compiler = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }
 android-test = { id = "com.android.test", version.ref = "androidGradlePlugin" }
 baselineprofile = { id = "androidx.baselineprofile", version.ref = "baselineprofile" }
+detekt = { id = "io.gitlab.arturbosch.detekt", version.ref = "detekt" }

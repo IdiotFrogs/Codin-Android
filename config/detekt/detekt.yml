@@ -1,0 +1,92 @@
+build:
+  maxIssues: 0
+
+config:
+  validation: true
+  warningsAsErrors: true
+
+complexity:
+  active: true
+  ComplexCondition:
+    active: true
+    threshold: 5
+  ComplexInterface:
+    active: true
+    threshold: 10
+    includeStaticDeclarations: false
+    includePrivateDeclarations: false
+  CyclomaticComplexMethod:
+    active: true
+    threshold: 15
+    ignoreSingleWhenExpression: false
+    ignoreSimpleWhenEntries: false
+    ignoreNestingFunctions: false
+    nestingFunctions:
+      - 'also'
+      - 'apply'
+      - 'forEach'
+      - 'isNotNull'
+      - 'ifNull'
+      - 'let'
+      - 'run'
+      - 'use'
+      - 'with'
+  LargeClass:
+    active: true
+    threshold: 500
+  LongMethod:
+    active: true
+    threshold: 50
+  LongParameterList:
+    active: true
+    functionThreshold: 6
+    constructorThreshold: 7
+    ignoreDefaultParameters: false
+    ignoreDataClasses: true
+  NestedBlockDepth:
+    active: true
+    threshold: 10
+  TooManyFunctions:
+    active: true
+    thresholdInFiles: 30
+    thresholdInClasses: 20
+    thresholdInInterfaces: 10
+    thresholdInObjects: 20
+    thresholdInEnums: 5
+    ignoreDeprecated: true
+    ignorePrivate: true
+    ignoreOverridden: false
+
+coroutines:
+  active: true
+
+empty-blocks:
+  active: true
+
+naming:
+  active: true
+  BooleanPropertyNaming:
+    active: true
+  NonBooleanPropertyPrefixedWithIs:
+    active: true
+  FunctionNaming:
+    ignoreAnnotated:
+      - 'Composable'
+
+performance:
+  active: true
+  SpreadOperator:
+    active: false
+
+potential-bugs:
+  active: true
+  HasPlatformType:
+    active: true
+
+style:
+  active: false
+
+exceptions:
+  active: true
+  TooGenericExceptionCaught:
+    active: false
