@@ -2,9 +2,10 @@ package com.example.architecture_test
 
 import com.android.build.api.dsl.CommonExtension
 import org.gradle.api.Project
+import org.gradle.kotlin.dsl.configure
 import org.gradle.kotlin.dsl.dependencies
-import org.gradle.kotlin.dsl.getByType
 import org.jetbrains.kotlin.compose.compiler.gradle.ComposeCompilerGradlePluginExtension
+import org.jetbrains.kotlin.compose.compiler.gradle.ComposeFeatureFlag
 
 internal fun Project.configureComposeAndroid(commonExtension: CommonExtension<*, *, *, *, *, *>) {
     commonExtension.apply {
@@ -23,8 +24,10 @@ internal fun Project.configureComposeAndroid(commonExtension: CommonExtension<*,
             add("implementation", libs.findLibrary("androidx-compose-material3").get())
         }
 
-        extensions.getByType<ComposeCompilerGradlePluginExtension>().apply {
-            enableStrongSkippingMode.set(true)
+        extensions.configure<ComposeCompilerGradlePluginExtension> {
+//            featureFlags.add(ComposeFeatureFlag.StrongSkipping) // StrongSkipping, IntrinsicRemember 은 kotlin 2.0.20 부터 기본적으로 활성화 상태
+//            featureFlags.add(ComposeFeatureFlag.IntrinsicRemember)
+            featureFlags.add(ComposeFeatureFlag.OptimizeNonSkippingGroups)
         }
     }
 }
