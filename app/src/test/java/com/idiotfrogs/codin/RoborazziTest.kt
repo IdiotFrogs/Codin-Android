@@ -1,6 +1,8 @@
 package com.idiotfrogs.codin
 
+import androidx.compose.material3.Text
 import androidx.compose.ui.test.hasText
+import androidx.compose.ui.test.junit4.createAndroidComposeRule
 import androidx.compose.ui.test.junit4.createComposeRule
 import androidx.compose.ui.test.onRoot
 import com.github.takahirom.roborazzi.captureRoboImage
@@ -14,20 +16,11 @@ import org.robolectric.annotation.GraphicsMode
 @RunWith(RobolectricTestRunner::class)
 class RoborazziTest {
     @get:Rule
-    val composeRule = createComposeRule()
+    val composeTestRule = createAndroidComposeRule<MainActivity>()
 
     @Test
     fun roborazziTest() {
-        composeRule.setContent {
-            Greeting()
-        }
-
-        composeRule
-            .onNode(hasText("Hello"))
-            .captureRoboImage()
-
-        composeRule
-            .onRoot()
+        composeTestRule.onRoot()
             .captureRoboImage()
     }
 }

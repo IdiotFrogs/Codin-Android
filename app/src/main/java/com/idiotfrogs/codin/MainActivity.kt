@@ -21,7 +21,9 @@ class MainActivity : ComponentActivity() {
             CodinTheme {
                 Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
                     Greeting(
-                        modifier = Modifier.padding(innerPadding)
+                        modifier = Modifier
+                            .fillMaxSize()
+                            .padding(innerPadding)
                     )
                 }
             }
