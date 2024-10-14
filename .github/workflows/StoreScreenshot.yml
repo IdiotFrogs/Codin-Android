@@ -1,0 +1,58 @@
+name: store screenshots
+
+on:
+  pull_request:
+    branches: [ "develop" ]
+
+jobs:
+  store-screenshot-test:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+
+    permissions:
+      contents: read # 클론 권한 설정
+      actions: write # 업로드-아티팩트 권한 설정
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11 # v4.1.1
+
+      - name: Set up JDK 17
+        uses: actions/setup-java@99b8673ff64fbf99d8d325f52d9a5bdedb8483e9 # v4.2.1
+        with:
+          distribution: temurin
+          java-version: 17
+
+      # actions/setup-java의 캐싱 대신 사용
+      - name: Setup Gradle
+        uses: gradle/gradle-build-action@ac2d340dc04d9e1113182899e983b5400c17cda1 # v3.5.0
+        with:
+          gradle-version: wrapper
+
+      - name: record screenshot
+        run: |
+          ./gradlew recordRoborazziDebug --stacktrace --rerun-tasks
+
+      - uses: actions/upload-artifact@v4
+        if: ${{ always() }}
+        with:
+          name: screenshot
+          path: |
+            **/build/outputs/roborazzi
+          retention-days: 30
+
+      - uses: actions/upload-artifact@v4
+        if: ${{ always() }}
+        with:
+          name: screenshot-reports
+          path: |
+            **/build/reports
+          retention-days: 30
+
+      - uses: actions/upload-artifact@v4
+        if: ${{ always() }}
+        with:
+          name: screenshot-test-results
+          path: |
+            **/build/test-results
+          retention-days: 30
