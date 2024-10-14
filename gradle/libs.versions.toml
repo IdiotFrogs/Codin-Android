@@ -19,7 +19,7 @@ landscapist = "2.3.6"
 
 junit = "4.13.2"
 androidxTestExt = "1.2.1"
-androidxEspresso = "3.6.1"
+androidxEspresso = "3.5.1"
 ktlint = "12.1.1"
 detekt = "1.23.6"
 
