@@ -31,6 +31,9 @@ jobs:
         with:
           gradle-version: wrapper
 
+      - name: Give executable permission to gradlew
+        run: chmod +x ./gradlew
+
       - name: record screenshot
         run: |
           ./gradlew recordRoborazziDebug --stacktrace --rerun-tasks
