@@ -4,6 +4,8 @@ on:
   pull_request:
     branches: [ "develop" ]
 
+permissions: { }
+
 jobs:
   store-screenshot-test:
     runs-on: ubuntu-latest
