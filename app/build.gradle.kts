@@ -2,6 +2,7 @@ plugins {
     id("convention.android.application")
     id("convention.android.hilt")
     alias(libs.plugins.baselineprofile)
+    alias(libs.plugins.roborazzi)
 }
 
 dependencies {
